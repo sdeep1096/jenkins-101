@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'
+            label 'docker-agent-alpine'
             }
       }
     triggers {
@@ -12,8 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                echo "Building Stuff.."
                 '''
             }
         }
@@ -22,8 +21,8 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                javac helloworld.java
+                java hello
                 '''
             }
         }
